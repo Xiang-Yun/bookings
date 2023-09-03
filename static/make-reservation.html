@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
     <title>Hello, world!</title>
 
     <style>
@@ -21,8 +21,11 @@
             font-size: 80%;
         }
 
-    </style>
+        .room-image{
+            max-width: 50%;
+        }
 
+    </style>
 
   </head>
   <body>
@@ -61,55 +64,39 @@
       </nav>
 
 
-
-      <div id="main-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#main-carousel" data-slide-to="1"></li>
-            <li data-target="#main-carousel" data-slide-to="2"></li>
-          </ol>
-          
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100" src="file:///media/david/Data/GO/bookings/static/images/woman-laptop.png" alt="First slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Lorem ipsum dolor sit</p>
-            </div>
-
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="file:///media/david/Data/GO/bookings/static/images/tray.png" alt="Second slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="file:///media/david/Data/GO/bookings/static/images/outside.png" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Lorem ipsum dolor sit</p>
-            </div>
-          </div>
-        </div>
-     </div>
-
-
-
         <div class="container">
-           
+          
             <div class="row">
                 <div class="col">
-                    <h1 align="center">Welcom to Fort Smythe Bed and Breakfast</h1>
-                    <p>Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a vacation</p>
-                </div>
-            </div>
+                    <h1 align="center">Make reservation</h1>
 
+                    <form method="post" action="" class="needs-validation" novalidate>
+                      <div class="form=group mt-5">
+                        <label for="first_name">First name:</label>
+                        <input type="text" name="first_name" id="first_name" class="form-control" autocomplate="off">
+                      </div>
 
-            <div class="row">
-                <div class="col text-center">
-                    <a href="/make-reservation" class="btn btn-success">Make reservation now</a>
+                      <div class="form=group mt-5">
+                        <label for="last_name">Last name:</label>
+                        <input type="text" name="last_name" id="last_name" class="form-control" required autocomplate="off">
+                      </div>
+
+                      <div class="form=group mt-5">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email"  class="form-control" required autocomplate="off">
+                      </div>
+
+                      <div class="form=group mt-5">
+                        <label for="phone">Phone number:</label>
+                        <input type="text" name="phone" id="phone"  class="form-control" required autocomplate="off">
+                      </div>
+
+                      <hr>
+
+                      <input type="submit" class="btn btn-primary" value="Make Reservation">
+
+                    </form>
+
                 </div>
             </div>
 

@@ -40,7 +40,7 @@ func main() {
 	app.UseCache = false
 
 	repo := handlers.NewRepo(&app)
-	handlers.NewHandlders(repo)
+	handlers.NewHandlers(repo)
 	render.NewTemplates(&app)
 
 	fmt.Println("Staring application on port", portNumber)

@@ -1,7 +1,7 @@
 package render
 
 import (
-	"bookings/pkg/config"
+	"bookings/interval/config"
 	"bookings/pkg/models"
 	"bytes"
 	"html/template"

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bookings/pkg/config"
+	"bookings/interval/config"
 	"bookings/pkg/handlers"
 	"bookings/pkg/render"
 	"fmt"

@@ -36,7 +36,10 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 
-	render.RenderTemplate(w, r, "home.page.html", &models.TemplateData{})
+	err := render.RenderTemplate(w, r, "home.page.html", &models.TemplateData{})
+	if err != nil {
+		log.Fatal("error render home page: ", err)
+	}
 }
 
 // About is the handler for the about page
@@ -83,7 +86,7 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 	form := forms.New(r.PostForm)
 
 	form.Required("first_name", "last_name", "email")
-	form.MinLength("first_name", 3, r)
+	form.MinLength("first_name", 3)
 	form.IsEmail("email")
 
 	if !form.Valid() {

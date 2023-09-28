@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  mydb:
+    build: .
+    image: mydb
+    container_name: mydb
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
+
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./:/workspace
+      - ./data:/var/lib/mysql
+      # - ./my.cnf:/etc/mysql/my.cnf
+    environment:
+    - MARIADB_ROOT_PASSWORD=root
+    - MARIADB_PASSWORD=root
+    - MARIADB_DATABASE=bookings_development
+    # - MARIADB_DATABASE=bookings_test
+    # - MARIADB_DATABASE=bookings_production
+

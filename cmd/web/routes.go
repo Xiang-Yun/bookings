@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bookings/interval/config"
-	"bookings/pkg/handlers"
+	"bookings/internal/config"
+	"bookings/internal/handlers"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"

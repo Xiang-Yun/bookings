@@ -1,0 +1,13 @@
+development:
+  dialect: sqlite3
+  database: db/myapp_development.sqlite3
+  pool: 5
+
+test:
+  dialect: sqlite3
+  database: db/myapp_test.sqlite3
+
+production:
+  dialect: sqlite3
+  database: db/myapp_production.sqlite3
+

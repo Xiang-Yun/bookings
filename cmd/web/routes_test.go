@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bookings/interval/config"
+	"bookings/internal/config"
 	"fmt"
 	"testing"
 

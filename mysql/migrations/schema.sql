@@ -125,7 +125,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) NOT NULL DEFAULT '',
   `last_name` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(60) NOT NULL,
   `access_level` int(11) NOT NULL DEFAULT 1,
   `created_at` datetime NOT NULL,
@@ -144,4 +144,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-28  7:29:14
+-- Dump completed on 2023-10-04  3:07:38

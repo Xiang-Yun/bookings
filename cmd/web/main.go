@@ -68,7 +68,7 @@ func run() (*driver.DB, error) {
 
 	// connect to database
 	log.Println("Connecting to database...")
-	db, err := driver.ConnectSQL("root:root@/bookings_development")
+	db, err := driver.ConnectSQL("root:root@/bookings_development?parseTime=true")
 	if err != nil {
 		log.Fatal("cannot connect to database Dying")
 		return nil, err

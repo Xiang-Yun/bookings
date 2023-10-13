@@ -65,7 +65,7 @@ func (m *mysqlDBRepo) InsertRoomRestriction(r models.RoomRestriction) error {
 }
 
 // SearchAvalibilityByDatesByRoomID returns true if avalibility exists for roomID, and false if no availability exists
-func (m *mysqlDBRepo) SearchAvalibilityByDatesByRoomID(start, end time.Time, roomID int) (bool, error) {
+func (m *mysqlDBRepo) SearchAvailabilityByDatesByRoomID(start, end time.Time, roomID int) (bool, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 

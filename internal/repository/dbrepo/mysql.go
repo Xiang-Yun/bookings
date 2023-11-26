@@ -324,3 +324,89 @@ func (m *mysqlDBRepo) AllNewReservations() ([]models.Reservation, error) {
 	}
 	return reservations, err
 }
+
+// GetReservationByID returns one reservation by ID
+func (m *mysqlDBRepo) GetReservationByID(id int) (models.Reservation, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	var res models.Reservation
+
+	query := `
+		select r.id, r.first_name, r.last_name, r.email, r.phone, r.start_date,
+		r.end_date, r.room_id, r.created_at, r.updated_at, r.processed,
+		rm.id, rm.room_name
+		from reservations r
+		left join rooms rm on (r.room_id = rm.id)
+		where r.id = ?
+	`
+
+	row := m.DB.QueryRowContext(ctx, query, id)
+	err := row.Scan(
+		&res.ID,
+		&res.FirstName,
+		&res.LastName,
+		&res.Email,
+		&res.Phone,
+		&res.StartDate,
+		&res.EndDate,
+		&res.RoomID,
+		&res.CreatedAt,
+		&res.UpdatedAt,
+		&res.Processed,
+		&res.Room.ID,
+		&res.Room.RoomName,
+	)
+
+	if err != nil {
+		return res, err
+	}
+	return res, nil
+}
+
+// UpdateReservation updates a reservation in the database
+func (m *mysqlDBRepo) UpdateReservation(u models.Reservation) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	query := `
+		update reservations set first_name = ?, last_name = ?, email = ?, phone = ?, updated_at = ?
+		where id = ?
+	`
+	_, err := m.DB.ExecContext(ctx, query,
+		u.FirstName,
+		u.LastName,
+		u.Email,
+		u.Phone,
+		time.Now().Local(),
+		u.ID,
+	)
+	return err
+}
+
+// DeleteReservation deletes one reservation by id
+func (m *mysqlDBRepo) DeleteReservation(id int) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	query := `
+		delete from reservations where id = ?
+	`
+
+	_, err := m.DB.ExecContext(ctx, query, id)
+	return err
+}
+
+// UpdateProcessedForReservation updates processed for reservation by id
+func (m *mysqlDBRepo) UpdateProcessedForReservation(id, processed int) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	query := `
+		update reservations set processed = ? where id = ?
+	`
+	_, err := m.DB.ExecContext(ctx, query,
+		processed, id,
+	)
+	return err
+}
